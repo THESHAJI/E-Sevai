@@ -1,0 +1,275 @@
+[
+  {
+    "id":"pm-kisan",
+    "name":"PM Kisan Samman Nidhi",
+    "category":"Agriculture",
+    "level":"Central",
+    "states":["All India"],
+    "official_url":"https://pmkisan.gov.in/",
+    "application_url":"https://pmkisan.gov.in/",
+    "summary":"Income support of Rs. 6,000 per year for eligible landholding farmer families, subject to official exclusions.",
+    "benefits":["Rs. 6,000 per year in three equal installments, subject to official payment rules"],
+    "documents":["Aadhaar","Land ownership papers","Bank account details"],
+    "application_steps":["Visit the official PM-KISAN portal","Use a Farmer Corner service or registration/login option","Submit the required details and documents","Check application and payment status on the portal"],
+    "source_note":"Official portal; benefits and exclusions should be re-checked on the portal before application.",
+    "criteria":[
+      {"field":"occupation","operator":"in","value":["Farmer","Agricultural laborer"],"label":"Occupation is farmer/agricultural worker"},
+      {"field":"is_farmer","operator":"eq","value":true,"label":"Applicant is an eligible landholding farmer"},
+      {"field":"state","operator":"not_empty","label":"State of residence is available"}
+    ]
+  },
+  {
+    "id":"pmjay",
+    "name":"Ayushman Bharat - Pradhan Mantri Jan Arogya Yojana",
+    "category":"Health",
+    "level":"Central",
+    "states":["All India"],
+    "official_url":"https://pmjay.gov.in/",
+    "application_url":"https://beneficiary.nha.gov.in/",
+    "summary":"Health coverage for eligible beneficiary families identified through official PM-JAY beneficiary criteria.",
+    "benefits":["Health cover of up to Rs. 5 lakh per eligible family per year, as stated by PM-JAY"],
+    "documents":["Identity proof","Official beneficiary-family details","Aadhaar, if applicable"],
+    "application_steps":["Check eligibility on the official PM-JAY beneficiary portal","Visit an empaneled hospital or Ayushman Mitra","Complete beneficiary verification and claim process"],
+    "source_note":"Eligibility is determined using official beneficiary databases and rules.",
+    "verification_status":"needs_official_verification",
+    "criteria":[
+      {"field":"annual_income","operator":"lte","value":100000,"label":"Annual family income is within Rs. 1 lakh","verification_status":"needs_official_verification"},
+      {"field":"bpl","operator":"eq","value":true,"label":"Family is identified through official BPL/Poor household criteria","verification_status":"needs_official_verification"},
+      {"field":"state","operator":"not_empty","label":"State is available"}
+    ]
+  },
+  {
+    "id":"pmay-u",
+    "name":"Pradhan Mantri Awas Yojana - Urban 2.0",
+    "category":"Housing",
+    "level":"Central",
+    "states":["All India"],
+    "official_url":"https://pmay-urban.gov.in/",
+    "application_url":"https://pmay-urban.gov.in/",
+    "summary":"Affordable housing assistance for eligible urban households under PMAY-U 2.0.",
+    "benefits":["Housing assistance under the applicable PMAY-U 2.0 vertical and state implementation rules"],
+    "documents":["Identity proof","Income proof","Residence/ownership documents","Caste or category certificate, if applicable"],
+    "application_steps":["Review the PMAY-U 2.0 eligibility and verticals","Apply through the official PMAY-U portal or designated ULB/Common Service Centre","Complete verification and track application status"],
+    "source_note":"Benefits and exact household eligibility vary by vertical and implementation guidelines.",
+    "verification_status":"needs_official_verification",
+    "criteria":[
+      {"field":"residence_type","operator":"in","value":["Urban","Both"],"label":"Applicant resides in an urban area"},
+      {"field":"annual_income","operator":"lte","value":900000,"label":"Annual household income is within the applicable Rs. 9 lakh EWS/LIG band","verification_status":"needs_official_verification"},
+      {"field":"state","operator":"not_empty","label":"State is available"}
+    ]
+  },
+  {
+    "id":"pm-mudra",
+    "name":"Pradhan Mantri Mudra Yojana",
+    "category":"Entrepreneurship",
+    "level":"Central",
+    "states":["All India"],
+    "official_url":"https://www.mudra.org.in/",
+    "application_url":"https://www.mudra.org.in/",
+    "summary":"Loans through participating banks and financial institutions for non-corporate, non-farm micro-enterprises.",
+    "benefits":["Mudra loan products: Shishu, Kishore and Tarun, subject to lender approval"],
+    "documents":["Identity proof","Address proof","Business/enterprise details","Project report or plan"],
+    "application_steps":["Prepare a short business plan","Apply at a participating bank, NBFC or MFI","Complete lender appraisal and provide required documents"],
+    "source_note":"Mudra provides loan products through lenders; loan amount and approval are not guaranteed.",
+    "criteria":[
+      {"field":"occupation","operator":"in","value":["Self-employed","Small business","Micro-enterprise owner"],"label":"Occupation is a qualifying non-farm micro-enterprise activity"},
+      {"field":"age","operator":"gte","value":18,"label":"Applicant is at least 18 years old"},
+      {"field":"state","operator":"not_empty","label":"State is available"}
+    ]
+  },
+  {
+    "id":"nsap",
+    "name":"National Social Assistance Programme",
+    "category":"Social Security",
+    "level":"Central",
+    "states":["All India"],
+    "official_url":"https://nsap.nic.in/",
+    "application_url":"https://nsap.nic.in/",
+    "summary":"Central support for eligible elderly persons, widows and persons with disabilities under NSAP components.",
+    "benefits":["Cash assistance under the applicable NSAP component; amount is administered by state/UT government"],
+    "documents":["Identity and age proof","Bank account details","Category/disability/widow status proof","Income/BPL records where required"],
+    "application_steps":["Identify the applicable NSAP component","Apply through the state or district social welfare office","Complete local verification and pension processing"],
+    "source_note":"Component eligibility and pension amount vary by state/UT and official rules.",
+    "criteria":[
+      {"field":"bpl","operator":"eq","value":true,"label":"Applicant is below the official poverty line"},
+      {"field":"age","operator":"gte","value":60,"label":"Applicant meets age threshold for the elderly pension component"},
+      {"field":"state","operator":"not_empty","label":"State is available"}
+    ]
+  },
+  {
+    "id":"pmmvy",
+    "name":"Pradhan Mantri Matru Vandana Yojana",
+    "category":"Women and Child",
+    "level":"Central",
+    "states":["All India"],
+    "official_url":"https://pmmvy.wcd.gov.in/",
+    "application_url":"https://pmmvy.wcd.gov.in/",
+    "summary":"Maternity benefit scheme for eligible pregnant women and lactating mothers, subject to official conditions.",
+    "benefits":["Maternity cash benefit under PMMVY rules; official installment amounts and conditions apply"],
+    "documents":["Aadhaar","MCP card","Bank account details","Registration and childbirth-related records"],
+    "application_steps":["Register at an Anganwadi Centre or approved health facility","Submit PMMVY application through the official system","Complete prescribed checks and keep registration details for payment tracking"],
+    "source_note":"Official PMMVY rules include pregnancy, registration and instalment conditions.",
+    "verification_status":"needs_official_verification",
+    "criteria":[
+      {"field":"gender","operator":"eq","value":"Female","label":"Applicant is female"},
+      {"field":"is_pregnant","operator":"eq","value":true,"label":"Applicant is pregnant or a lactating mother"},
+      {"field":"age","operator":"gte","value":19,"label":"Applicant is at least 19 years old"},
+      {"field":"is_first_pregnancy","operator":"eq","value":true,"label":"First-pregnancy benefit condition","verification_status":"needs_official_verification"}
+    ]
+  },
+  {
+    "id":"nps",
+    "name":"National Pension System",
+    "category":"Pension",
+    "level":"Central",
+    "states":["All India"],
+    "official_url":"https://www.npscra.nsdl.co.in/",
+    "application_url":"https://enps.nsdl.co.in/",
+    "summary":"Voluntary long-term retirement savings scheme for eligible Indian citizens.",
+    "benefits":["Market-linked retirement corpus and pension on exit, subject to NPS rules"],
+    "documents":["Identity proof","Address proof","PAN or applicable alternative","Bank account details","Photograph"],
+    "application_steps":["Choose a registered Point of Presence or official eNPS service","Complete KYC and contribution details","Use the official system to open a PRAN account"],
+    "source_note":"NPS eligibility age and exit rules are governed by PFRDA/NPS regulations.",
+    "criteria":[
+      {"field":"age","operator":"gte","value":18,"label":"Applicant is at least 18 years old"},
+      {"field":"age","operator":"lte","value":70,"label":"Applicant is no older than 70 years"},
+      {"field":"state","operator":"not_empty","label":"State is available"}
+    ]
+  },
+  {
+    "id":"tn-pudhumai-penn",
+    "name":"Tamil Nadu Pudhumai Penn",
+    "category":"Education",
+    "level":"Tamil Nadu",
+    "states":["Tamil Nadu"],
+    "official_url":"https://pudhumaipenn.tn.gov.in/",
+    "application_url":"https://pudhumaipenn.tn.gov.in/",
+    "summary":"Monthly financial assistance for eligible girl students who studied from Class VI to XII in Tamil Nadu government schools.",
+    "benefits":["Monthly assistance of Rs. 1,000 into the bank account for eligible students who pursue higher education, subject to official guidelines"],
+    "documents":["Academic records","Bank account details","Identity and residence proof","Bonafide certificate"],
+    "application_steps":["Enter Class VI-XII as an eligible Tamil Nadu government school student","Complete higher education admission","Submit details through the official scheme or institution process"],
+    "source_note":"Official scheme portal and institutional verification govern final eligibility.",
+    "verification_status":"needs_official_verification",
+    "criteria":[
+      {"field":"state","operator":"eq","value":"Tamil Nadu","label":"Applicant is in Tamil Nadu"},
+      {"field":"gender","operator":"eq","value":"Female","label":"Applicant is female"},
+      {"field":"education","operator":"in","value":["12th Passed","Currently in higher education","Undergraduate"],"label":"Education level matches the scheme stage"},
+      {"field":"is_govt_school_student","operator":"eq","value":true,"label":"Required government-school study history","verification_status":"needs_official_verification"}
+    ]
+  },
+  {
+    "id":"tn-naan-mudhalvan",
+    "name":"Tamil Nadu Naan Mudhalvan",
+    "category":"Skill Development",
+    "level":"Tamil Nadu",
+    "states":["Tamil Nadu"],
+    "official_url":"https://naanmudhalvan.tnsdc.tn.gov.in/",
+    "application_url":"https://naanmudhalvan.tnsdc.tn.gov.in/",
+    "summary":"Skill-development and placement support for eligible students and job seekers in Tamil Nadu.",
+    "benefits":["Training, counselling and career support opportunities under applicable Naan Mudhalvan programs"],
+    "documents":["Identity proof","Academic or institution records","Age proof","Bank details if requested"],
+    "application_steps":["Visit the official Naan Mudhalvan portal","Choose an applicable course or learner category","Register and complete institutional or candidate verification"],
+    "source_note":"Available courses, eligibility and institutions vary by program.",
+    "verification_status":"needs_official_verification",
+    "criteria":[
+      {"field":"state","operator":"eq","value":"Tamil Nadu","label":"Applicant is in Tamil Nadu"},
+      {"field":"education","operator":"in","value":["College Student","Undergraduate","Postgraduate","Diploma","ITI","12th Passed"],"label":"Applicant belongs to an eligible student or learner category"},
+      {"field":"age","operator":"between","value":[15,40],"label":"Program-specific age range","verification_status":"needs_official_verification"}
+    ]
+  },
+  {
+    "id":"tn-velaivaaippu",
+    "name":"Tamil Nadu Employment Registration",
+    "category":"Employment",
+    "level":"Tamil Nadu",
+    "states":["Tamil Nadu"],
+    "official_url":"https://tnvelaivaaippu.gov.in/",
+    "application_url":"https://tnvelaivaaippu.gov.in/Empower/",
+    "summary":"Registration service for job seekers with the Tamil Nadu Employment Department.",
+    "benefits":["Access to employment exchange services, job notifications and placement support"],
+    "documents":["Aadhaar","Age proof","Community certificate if applicable","Education and experience certificates"],
+    "application_steps":["Visit the Tamil Nadu Employment and Career Guidance portal","Register as a job seeker","Complete profile and keep registration details for renewal or updates"],
+    "source_note":"Registration eligibility and renewal procedures follow Tamil Nadu Employment Department rules.",
+    "criteria":[
+      {"field":"state","operator":"eq","value":"Tamil Nadu","label":"Applicant is in Tamil Nadu"},
+      {"field":"occupation","operator":"in","value":["Unemployed","Job seeker","Student"],"label":"Applicant is seeking employment"},
+      {"field":"age","operator":"gte","value":18,"label":"Applicant is at least 18 years old"}
+    ]
+  },
+  {
+    "id":"mh-majhi-ladki-bahin",
+    "name":"Mukhyamantri Majhi Ladki Bahin Yojana",
+    "category":"Women and Social Welfare",
+    "level":"Maharashtra",
+    "states":["Maharashtra"],
+    "official_url":"https://ladakibahin.maharashtra.gov.in/",
+    "application_url":"https://ladakibahin.maharashtra.gov.in/",
+    "summary":"State welfare scheme for eligible women of Maharashtra, subject to the latest official notification and verification rules.",
+    "benefits":["A monthly benefit may be paid to eligible beneficiaries under the current official scheme rules"],
+    "documents":["Aadhaar","Domicile/residence proof","Bank account details","Income certificate","Age proof"],
+    "application_steps":["Check the current eligibility notification on the official portal","Apply through the official online system or designated application point","Complete e-KYC and verification","Track application status through the official portal"],
+    "source_note":"Exact age, income and exclusion rules are notification-dependent and must be rechecked on the official portal.",
+    "verification_status":"needs_official_verification",
+    "criteria":[
+      {"field":"gender","operator":"eq","value":"Female","label":"Applicant is female"},
+      {"field":"age","operator":"between","value":[21,65],"label":"Notification-dependent age range","verification_status":"needs_official_verification"},
+      {"field":"annual_income","operator":"lte","value":250000,"label":"Notification-dependent income limit","verification_status":"needs_official_verification"}
+    ]
+  },
+  {
+    "id":"ka-gruha-jyoti",
+    "name":"Karnataka Gruha Jyoti",
+    "category":"Utilities",
+    "level":"Karnataka",
+    "states":["Karnataka"],
+    "official_url":"https://gruhajyoti.karnataka.gov.in/",
+    "application_url":"https://sevasindhuservices.karnataka.gov.in/",
+    "summary":"Karnataka electricity subsidy scheme for eligible domestic consumers, subject to state rules.",
+    "benefits":["The scheme provides state-announced benefits up to the official free-unit limit for eligible domestic consumers"],
+    "documents":["Aadhaar","Residential electricity account details","Address proof","Owner or tenant records if required"],
+    "application_steps":["Read the current Gruha Jyoti notification","Register using the official Seva Sindhu or ESCOM process","Complete account linking and verification","Track benefits through the designated electricity system"],
+    "source_note":"Unit limits, exclusions and application process are governed by current Karnataka government notifications.",
+    "verification_status":"needs_official_verification",
+    "criteria":[
+      {"field":"residence_type","operator":"in","value":["Urban","Rural","Both"],"label":"Applicant has a residential use category"},
+      {"field":"annual_income","operator":"lte","value":1000000,"label":"Income-based eligibility has not been confirmed by the existing official source information","verification_status":"needs_official_verification"}
+    ]
+  },
+  {
+    "id":"kl-karunya",
+    "name":"Kerala Karunya Arogya Suraksha Paddhathi",
+    "category":"Health",
+    "level":"Kerala",
+    "states":["Kerala"],
+    "official_url":"https://sha.kerala.gov.in/",
+    "application_url":"https://sha.kerala.gov.in/",
+    "summary":"Kerala health assurance scheme implemented through the State Health Agency and official beneficiary verification.",
+    "benefits":["Health assistance for covered treatments according to the current package and beneficiary rules"],
+    "documents":["Aadhaar or identity proof","Ration or category proof","Address proof","Medical referral and treatment records"],
+    "application_steps":["Check beneficiary status on the Kerala State Health Agency system","Visit an empaneled public or private hospital","Complete beneficiary verification","Use the package process for eligible treatment"],
+    "source_note":"Coverage and beneficiary categories are governed by current state and central health program rules.",
+    "verification_status":"needs_official_verification",
+    "criteria":[
+      {"field":"bpl","operator":"eq","value":true,"label":"Vulnerable or priority beneficiary category","verification_status":"needs_official_verification"}
+    ]
+  },
+  {
+    "id":"dl-ladli",
+    "name":"Delhi Ladli Scheme",
+    "category":"Women and Child",
+    "level":"Delhi",
+    "states":["Delhi"],
+    "official_url":"https://wcdsc.delhi.gov.in/wcd/ladli-scheme",
+    "application_url":"https://wcdsc.delhi.gov.in/wcd/ladli-scheme",
+    "summary":"Delhi government financial support scheme for eligible girl children, subject to official implementation rules.",
+    "benefits":["Financial assistance may be deposited in stages according to the official Ladli Scheme rules"],
+    "documents":["Birth certificate","Residence proof","Identity proof","School records","Bank or post office account details"],
+    "application_steps":["Review the official Ladli Scheme notification","Apply through the Delhi Women and Child Development Department process","Submit required certificates","Complete departmental verification and status tracking"],
+    "source_note":"Benefit stage amounts and eligibility conditions must be checked against the official Delhi portal.",
+    "verification_status":"needs_official_verification",
+    "criteria":[
+      {"field":"gender","operator":"eq","value":"Female","label":"Beneficiary is a girl child"},
+      {"field":"age","operator":"lte","value":18,"label":"Official child eligibility stage","verification_status":"needs_official_verification"}
+    ]
+  }
+]
