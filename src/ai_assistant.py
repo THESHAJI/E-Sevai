@@ -30,6 +30,32 @@ def get_api_key() -> str:
     return ""
 
 
+def get_model() -> str:
+    model = os.getenv("OPENAI_MODEL", "").strip()
+    if model:
+        return model
+
+    try:
+        import streamlit as st
+
+        model = str(st.secrets.get("OPENAI_MODEL", "")).strip()
+        if model:
+            return model
+    except Exception:
+        pass
+
+    try:
+        import streamlit as st
+
+        model = str(st.secrets.get("openai", {}).get("model", "")).strip()
+        if model:
+            return model
+    except Exception:
+        pass
+
+    return "gpt-4o-mini"
+
+
 def deterministic_explanation(scheme: dict, result: dict) -> str:
     lines = [f"Deterministic result for {scheme['name']}: **{result['status']}**."]
     if result["matched"]:
@@ -90,7 +116,7 @@ def explain_with_llm(scheme: dict, result: dict, question: str = "") -> dict:
             "https://api.openai.com/v1/chat/completions",
             headers={"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"},
             json={
-                "model": os.getenv("OPENAI_MODEL", "gpt-4o-mini"),
+                "model": get_model(),
                 "messages": [{"role": "system", "content": "Be concise, factual and transparent."},
                              {"role": "user", "content": prompt}],
                 "temperature": 0,

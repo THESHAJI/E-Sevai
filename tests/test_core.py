@@ -11,7 +11,7 @@ from pydantic import ValidationError
 from src.validator import UserProfile
 from src.scheme_service import load_schemes
 from src.eligibility import evaluate_scheme, evaluate_schemes
-from src.ai_assistant import explain_with_llm
+from src.ai_assistant import explain_with_llm, get_api_key, get_model
 
 
 class ProfileTests(unittest.TestCase):
@@ -127,6 +127,15 @@ class AiSafetyTests(unittest.TestCase):
             "failed": [],
             "unknown": [{"label": "Income", "status": "unknown", "evidence": "Income was not provided"}],
         }
+
+    def test_environment_api_key_and_model_are_read(self):
+        with patch.dict(
+            "os.environ",
+            {"OPENAI_API_KEY": "test-key", "OPENAI_MODEL": "test-model"},
+            clear=False,
+        ):
+            self.assertEqual(get_api_key(), "test-key")
+            self.assertEqual(get_model(), "test-model")
 
     def test_missing_api_key_uses_deterministic_fallback(self):
         with patch.dict("os.environ", {"OPENAI_API_KEY": ""}, clear=False):
